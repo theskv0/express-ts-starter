@@ -11,5 +11,6 @@
     "strict": true, 
     "noImplicitAny": true,
     "skipLibCheck": true,
+    "typeRoots": ["./src/interfaces", "./node_modules/@types"]
   }
 }

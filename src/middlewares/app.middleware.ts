@@ -1,15 +1,18 @@
 import responseUtil from "../utils/response.util";
 import { NextFunction, Request, Response } from "express";
 import Config from "../config";
+import Constant from "../config/constant";
 
 const appMiddleware = (req: Request, res: Response, next: NextFunction) => {
     try {
         // bind language
-        let local = req.headers.local || Config.LOCAL;
-        req.body.local = local;
-        req.body.lang = require(`../locals/${local}`);
+        let local = Config.LOCAL;
+        req.local = local;
+        req.lang = require(`../locals/${local}`);
+        // bind constant
+        req.constant = Constant;
         // bind response handler
-        req.body.ResponseHandler = responseUtil;
+        req.ResponseHandler = responseUtil;
         next();
     } catch(err) {
         next(err);

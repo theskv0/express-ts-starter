@@ -1,4 +1,8 @@
-import { Router } from "express";
+import { Router, Request } from "express";
+
+export interface Lang {
+    [Key: string]: string
+}
 
 export interface Routes {
     path: string;
@@ -15,4 +19,8 @@ export interface ResponseObject {
     code: number, 
     message: string, 
     data: object
+}
+
+export interface Constant {
+    [Key: string]: any
 }
